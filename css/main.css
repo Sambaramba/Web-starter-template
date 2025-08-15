@@ -18,7 +18,7 @@
 }
 
 body {
-  /* 4. Add font stack for base font styles */
+  /* 4. Add system font stack*/
   font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   /* 5. Add accessible line-height */
   line-height: 1.5;
