@@ -2,16 +2,12 @@ import path from "node:path";
 import HtmlWebpackPlugin from "html-webpack-plugin";
 
 export default {
-  mode: "development",
-  entry: "./src/index.js",
+  
+  entry: "./src/js/index.js",
   output: {
     filename: "main.js",
     path: path.resolve(import.meta.dirname, "dist"),
     clean: true,
-  },
-  devtool: "eval-source-map",
-  devServer: {
-    watchFiles: ["./src/template.html"],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -25,12 +21,22 @@ export default {
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(png|svg|jpg|jpeg|gif)$/i,
-        type: 'asset/resource',
+        test: /\.html$/i,
+        use: ["html-loader"],
       },
       {
-        test: /\.(woff|woff2|eot|ttf|otf)$/i,
-        type: 'asset/resource',
+        test: /\.(png|svg|jpg|jpeg|gif|webp)$/i,
+        type: "asset/resource",
+        generator: {
+          filename: 'assets/[name][ext]'
+        }
+      },
+      {
+        test: /\.woff2$/i,
+        type: "asset/resource",
+        generator: {
+          filename: 'assets/[name][ext]'
+        }
       },
     ],
   },
